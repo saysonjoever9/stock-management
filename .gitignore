@@ -10,5 +10,4 @@ env/
 *.log
 node_modules/
 .DS_Store
-tmp_live_check.py
 === NEON CONNECTION ===.txt
