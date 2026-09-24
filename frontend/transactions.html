@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transactions • Stock Management</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/sidebar.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <script src="/js/theme.js"></script>
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar"></aside>
+        <div class="main-area">
+            <header class="topbar" id="topbar"></header>
+            <main class="content">
+                <div class="page-header">
+                    <div class="page-header-left">
+                        <h1 class="page-title">Transaction History</h1>
+                        <p class="page-subtitle">All stock movements and adjustments</p>
+                    </div>
+                </div>
+
+                <section class="panel">
+                    <div class="filters">
+                        <select id="tx-type">
+                            <option value="">All types</option>
+                            <option value="in">Stock In</option>
+                            <option value="out">Stock Out</option>
+                            <option value="adjustment">Adjustment</option>
+                        </select>
+                        <input id="tx-date-from" type="date" />
+                        <input id="tx-date-to" type="date" />
+                        <button id="tx-filter-btn" class="btn">Filter</button>
+                        <button id="tx-export-btn" class="btn">Export CSV</button>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Product</th>
+                                    <th>SKU</th>
+                                    <th>Type</th>
+                                    <th>Qty</th>
+                                    <th>Prev</th>
+                                    <th>New</th>
+                                    <th>User</th>
+                                    <th>Reference</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tx-body">
+                                <tr>
+                                    <td colspan="9" class="empty">Loading…</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="pagination" id="tx-pagination"></div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth-sidebar.js"></script>
+    <script src="/js/transactions.js"></script>
+</body>
+
+</html>

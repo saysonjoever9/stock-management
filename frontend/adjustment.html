@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stock Adjustment • Stock Management</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/sidebar.css" />
+    <link rel="stylesheet" href="/css/stock-ops.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <script src="/js/theme.js"></script>
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar"></aside>
+        <div class="main-area">
+            <header class="topbar" id="topbar"></header>
+            <main class="content">
+                <div class="page-header">
+                    <div class="page-header-left">
+                        <h1 class="page-title">Stock Adjustment</h1>
+                        <p class="page-subtitle">Set exact inventory counts</p>
+                    </div>
+                </div>
+
+                <section class="panel padded stock-op-panel">
+                    <div class="stock-op-header">
+                        <div class="stock-op-icon adjust">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+                        </div>
+                        <div>
+                            <h2>Adjust Stock</h2>
+                            <p>Set the exact quantity for a product (e.g. after physical count).</p>
+                        </div>
+                    </div>
+
+                    <form id="stock-op-form" data-mode="adjust" class="form-grid">
+                        <div class="form-group full">
+                            <label for="op-product">Product *</label>
+                            <select id="op-product" required></select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="op-quantity">New Quantity *</label>
+                            <input id="op-quantity" type="number" min="0" value="0" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="op-reason">Reason</label>
+                            <input id="op-reason" maxlength="100" placeholder="e.g. Physical count" />
+                        </div>
+
+                        <div class="form-group full">
+                            <label for="op-notes">Notes</label>
+                            <textarea id="op-notes" placeholder="Optional notes…"></textarea>
+                        </div>
+
+                        <div class="stock-preview full" id="op-stock-preview"></div>
+
+                        <div id="op-error" class="alert alert-error full" hidden></div>
+
+                        <div class="modal-actions full">
+                            <button type="submit" class="btn btn-primary" id="op-submit">Adjust Stock</button>
+                        </div>
+                    </form>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth-sidebar.js"></script>
+    <script src="/js/stock-ops.js"></script>
+</body>
+
+</html>

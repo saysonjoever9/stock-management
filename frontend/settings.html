@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings • Stock Management</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/sidebar.css" />
+    <link rel="stylesheet" href="/css/settings.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <script src="/js/theme.js"></script>
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar"></aside>
+        <div class="main-area">
+            <header class="topbar" id="topbar"></header>
+            <main class="content">
+                <div class="page-header">
+                    <div class="page-header-left">
+                        <h1 class="page-title">Settings</h1>
+                        <p class="page-subtitle">System configuration and preferences</p>
+                    </div>
+                </div>
+
+                <div class="settings-grid">
+                    <section class="panel padded">
+                        <h2>Appearance</h2>
+                        <div class="settings-row">
+                            <div>
+                                <strong>Dark Mode</strong>
+                                <p>Toggle between light and dark theme</p>
+                            </div>
+                            <button class="btn" id="settings-theme-toggle">Toggle Theme</button>
+                        </div>
+                    </section>
+
+                    <section class="panel padded">
+                        <h2>Data Management</h2>
+                        <div class="settings-row">
+                            <div>
+                                <strong>Clear Local Cache</strong>
+                                <p>Remove locally stored purchase orders, requests, and customers</p>
+                            </div>
+                            <button class="btn btn-danger" id="settings-clear-cache">Clear Cache</button>
+                        </div>
+                        <div class="settings-row">
+                            <div>
+                                <strong>Export All Data</strong>
+                                <p>Download all locally stored data as JSON</p>
+                            </div>
+                            <button class="btn" id="settings-export-data">Export JSON</button>
+                        </div>
+                    </section>
+
+                    <section class="panel padded">
+                        <h2>System Info</h2>
+                        <div class="settings-info">
+                            <div class="settings-info-row">
+                                <span>App Version</span>
+                                <strong>1.0.0</strong>
+                            </div>
+                            <div class="settings-info-row">
+                                <span>Theme</span>
+                                <strong id="settings-theme-label">Light</strong>
+                            </div>
+                            <div class="settings-info-row">
+                                <span>Browser</span>
+                                <strong id="settings-browser"></strong>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth-sidebar.js"></script>
+    <script src="/js/settings.js"></script>
+</body>
+
+</html>

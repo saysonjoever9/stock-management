@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Barcode Scanner • Stock Management</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📷</text></svg>">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/sidebar.css" />
+    <link rel="stylesheet" href="/css/scanner.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+    <script src="/js/theme.js"></script>
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar"></aside>
+        <div class="main-area">
+            <header class="topbar" id="topbar"></header>
+            <main class="content">
+                <div class="page-header">
+                    <div class="page-header-left">
+                        <h1 class="page-title">Barcode Scanner</h1>
+                        <p class="page-subtitle">Scan QR codes and barcodes for quick product lookup</p>
+                    </div>
+                </div>
+
+                <div class="scanner-grid">
+                    <section class="panel padded scanner-panel">
+                        <div class="scanner-video-wrap">
+                            <video id="scanner-video" playsinline muted></video>
+                            <canvas id="scanner-canvas" hidden></canvas>
+                            <div class="scanner-overlay">
+                                <div class="scanner-frame"></div>
+                            </div>
+                        </div>
+
+                        <div class="scanner-controls">
+                            <button id="scanner-start" class="btn btn-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:6px;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                Start Camera
+                            </button>
+                            <button id="scanner-stop" class="btn" disabled>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:6px;"><rect x="6" y="6" width="12" height="12" rx="1"/></svg>
+                                Stop
+                            </button>
+                        </div>
+
+                        <div class="scanner-manual">
+                            <label>Or enter code manually:</label>
+                            <div class="scanner-manual-row">
+                                <input id="scanner-manual" type="text" placeholder="Type barcode or QR code…" />
+                                <button id="scanner-manual-btn" class="btn">Lookup</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="panel padded scanner-result-panel">
+                        <h2 style="margin-bottom:14px;font-size:15px;">Scan Result</h2>
+                        <div id="scanner-result" hidden></div>
+                        <div class="scanner-empty">
+                            <div class="scanner-empty-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><line x1="7" y1="12" x2="17" y2="12"/></svg>
+                            </div>
+                            <p>Point your camera at a barcode or QR code, or enter one manually.</p>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth-sidebar.js"></script>
+    <script src="/js/scanner.js"></script>
+</body>
+
+</html>

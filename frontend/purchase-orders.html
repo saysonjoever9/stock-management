@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Purchase Orders • Stock Management</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📝</text></svg>">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/sidebar.css" />
+    <link rel="stylesheet" href="/css/purchase-orders.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <script src="/js/theme.js"></script>
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar"></aside>
+        <div class="main-area">
+            <header class="topbar" id="topbar"></header>
+            <main class="content">
+                <div class="page-header">
+                    <div class="page-header-left">
+                        <h1 class="page-title">Purchase Orders</h1>
+                        <p class="page-subtitle">Create and manage restocking orders</p>
+                    </div>
+                    <button id="new-po-btn" class="btn btn-primary">+ New Purchase Order</button>
+                </div>
+
+                <section class="panel">
+                    <div class="filters">
+                        <select id="po-status-filter">
+                            <option value="">All statuses</option>
+                            <option value="pending">Pending</option>
+                            <option value="received">Received</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>PO Number</th>
+                                    <th>Supplier</th>
+                                    <th>Items</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Created</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="po-body">
+                                <tr>
+                                    <td colspan="7" class="empty">Loading…</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="pagination" id="po-pagination"></div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <div class="modal-backdrop" id="po-modal" hidden>
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal-header">
+                <h2 id="po-modal-title">New Purchase Order</h2>
+                <button type="button" class="modal-close" id="po-modal-close">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Supplier *</label>
+                    <select id="po-supplier">
+                        <option value="">Select supplier</option>
+                    </select>
+                </div>
+
+                <div class="po-items-section">
+                    <h3>Order Items</h3>
+                    <div class="po-add-row">
+                        <select id="po-item-product" class="po-product-select">
+                            <option value="">Select product</option>
+                        </select>
+                        <input id="po-item-qty" type="number" min="1" value="1" placeholder="Qty" />
+                        <input id="po-item-cost" type="number" step="0.01" min="0" value="0" placeholder="Cost" />
+                        <button type="button" class="btn btn-primary" id="po-add-item">Add</button>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table class="data-table po-items-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Qty</th>
+                                    <th>Unit Cost</th>
+                                    <th>Subtotal</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="po-items-body">
+                                <tr>
+                                    <td colspan="5" style="text-align:center;color:var(--muted);padding:20px;">No items added yet</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="po-total-row">
+                        <span>Total:</span>
+                        <strong id="po-total">₱0.00</strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Notes</label>
+                    <textarea id="po-notes" placeholder="Optional notes…"></textarea>
+                </div>
+
+                <div id="po-form-error" class="alert alert-error" hidden></div>
+                <div class="modal-actions">
+                    <button type="button" class="btn" id="po-cancel">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="po-save">Create Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth-sidebar.js"></script>
+    <script src="/js/purchase-orders.js"></script>
+</body>
+
+</html>

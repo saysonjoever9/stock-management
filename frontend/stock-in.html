@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stock In • Stock Management</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📥</text></svg>">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/sidebar.css" />
+    <link rel="stylesheet" href="/css/stock-ops.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <script src="/js/theme.js"></script>
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar"></aside>
+        <div class="main-area">
+            <header class="topbar" id="topbar"></header>
+            <main class="content">
+                <div class="page-header">
+                    <div class="page-header-left">
+                        <h1 class="page-title">Stock In</h1>
+                        <p class="page-subtitle">Receive new stock into inventory</p>
+                    </div>
+                </div>
+
+                <section class="panel padded stock-op-panel">
+                    <div class="stock-op-header">
+                        <div class="stock-op-icon in">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        </div>
+                        <div>
+                            <h2>Receive Stock</h2>
+                            <p>Add new inventory quantities to an existing product.</p>
+                        </div>
+                    </div>
+
+                    <form id="stock-op-form" data-mode="in" class="form-grid">
+                        <div class="form-group full">
+                            <label for="op-product">Product *</label>
+                            <select id="op-product" required></select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="op-quantity">Quantity to Add *</label>
+                            <input id="op-quantity" type="number" min="1" value="1" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="op-reference">Reference / PO Number</label>
+                            <input id="op-reference" maxlength="100" placeholder="e.g. PO-12345" />
+                        </div>
+
+                        <div class="form-group full">
+                            <label for="op-notes">Notes</label>
+                            <textarea id="op-notes" placeholder="Optional notes…"></textarea>
+                        </div>
+
+                        <div class="stock-preview full" id="op-stock-preview"></div>
+
+                        <div id="op-error" class="alert alert-error full" hidden></div>
+
+                        <div class="modal-actions full">
+                            <button type="submit" class="btn btn-primary" id="op-submit">Add Stock</button>
+                        </div>
+                    </form>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth-sidebar.js"></script>
+    <script src="/js/stock-ops.js"></script>
+</body>
+
+</html>

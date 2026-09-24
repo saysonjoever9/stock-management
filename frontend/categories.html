@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Categories • Stock Management</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/sidebar.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <script src="/js/theme.js"></script>
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar"></aside>
+        <div class="main-area">
+            <header class="topbar" id="topbar"></header>
+            <main class="content">
+                <div class="page-header">
+                    <div class="page-header-left">
+                        <h1 class="page-title">Categories</h1>
+                        <p class="page-subtitle">Organize your products into groups</p>
+                    </div>
+                    <button id="add-category-btn" class="btn btn-primary">+ Add Category</button>
+                </div>
+
+                <section class="panel">
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Products</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="categories-body">
+                                <tr>
+                                    <td colspan="4" class="empty">Loading…</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <div class="modal-backdrop" id="category-modal" hidden>
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal-header">
+                <h2 id="category-modal-title">Add Category</h2>
+                <button type="button" class="modal-close" id="category-modal-close">×</button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="category-id" />
+                <div class="form-group">
+                    <label for="c-name">Name *</label>
+                    <input id="c-name" maxlength="100" />
+                </div>
+                <div class="form-group">
+                    <label for="c-description">Description</label>
+                    <textarea id="c-description"></textarea>
+                </div>
+                <div id="category-form-error" class="alert alert-error" hidden></div>
+                <div class="modal-actions">
+                    <button type="button" class="btn" id="category-cancel">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="category-save">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth-sidebar.js"></script>
+    <script src="/js/categories.js"></script>
+</body>
+
+</html>

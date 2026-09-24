@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stock Out • Stock Management</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📤</text></svg>">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/sidebar.css" />
+    <link rel="stylesheet" href="/css/stock-ops.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <script src="/js/theme.js"></script>
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar"></aside>
+        <div class="main-area">
+            <header class="topbar" id="topbar"></header>
+            <main class="content">
+                <div class="page-header">
+                    <div class="page-header-left">
+                        <h1 class="page-title">Stock Out</h1>
+                        <p class="page-subtitle">Record outgoing inventory</p>
+                    </div>
+                </div>
+
+                <section class="panel padded stock-op-panel">
+                    <div class="stock-op-header">
+                        <div class="stock-op-icon out">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                        </div>
+                        <div>
+                            <h2>Remove Stock</h2>
+                            <p>Deduct quantities from inventory for sales or damages.</p>
+                        </div>
+                    </div>
+
+                    <form id="stock-op-form" data-mode="out" class="form-grid">
+                        <div class="form-group full">
+                            <label for="op-product">Product *</label>
+                            <select id="op-product" required></select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="op-quantity">Quantity to Remove *</label>
+                            <input id="op-quantity" type="number" min="1" value="1" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="op-reason">Reason</label>
+                            <input id="op-reason" maxlength="100" placeholder="e.g. Sold, Damaged, Expired" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="op-reference">Reference</label>
+                            <input id="op-reference" maxlength="100" placeholder="e.g. Receipt #" />
+                        </div>
+
+                        <div class="form-group full">
+                            <label for="op-notes">Notes</label>
+                            <textarea id="op-notes" placeholder="Optional notes…"></textarea>
+                        </div>
+
+                        <div class="stock-preview full" id="op-stock-preview"></div>
+
+                        <div id="op-error" class="alert alert-error full" hidden></div>
+
+                        <div class="modal-actions full">
+                            <button type="submit" class="btn btn-primary" id="op-submit">Remove Stock</button>
+                        </div>
+                    </form>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth-sidebar.js"></script>
+    <script src="/js/stock-ops.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audit Log • Stock Management</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/sidebar.css" />
+    <link rel="stylesheet" href="/css/audit.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <script src="/js/theme.js"></script>
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar"></aside>
+        <div class="main-area">
+            <header class="topbar" id="topbar"></header>
+            <main class="content">
+                <div class="page-header">
+                    <div class="page-header-left">
+                        <h1 class="page-title">Audit Log</h1>
+                        <p class="page-subtitle">System activity and security events</p>
+                    </div>
+                    <button id="refresh-btn" class="btn">↻ Refresh</button>
+                </div>
+
+                <section class="panel">
+                    <div class="filters">
+                        <input id="search-username" type="search" placeholder="Filter by username…" />
+                        <select id="filter-action">
+                            <option value="">All actions</option>
+                        </select>
+                        <select id="filter-resource">
+                            <option value="">All resources</option>
+                        </select>
+                        <select id="filter-status">
+                            <option value="">All statuses</option>
+                        </select>
+                        <input id="filter-date-from" type="date" title="From date" />
+                        <input id="filter-date-to" type="date" title="To date" />
+                        <button id="clear-filters-btn" class="btn">Clear</button>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>User</th>
+                                    <th>Action</th>
+                                    <th>Resource</th>
+                                    <th>Status</th>
+                                    <th>IP Address</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody id="audit-body">
+                                <tr>
+                                    <td colspan="7" class="empty">Loading…</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="pagination" id="audit-pagination"></div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth-sidebar.js"></script>
+    <script src="/js/audit.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+{
+    "version": 2,
+    "public": true,
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "builds": [{
+            "src": "*.html",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "css/**",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "js/**",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "img/**",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "manifest.json",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "sw.js",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "favicon.ico",
+            "use": "@vercel/static"
+        }
+    ],
+    "rewrites": [
+        { "source": "/dashboard", "destination": "/dashboard.html" },
+        { "source": "/scanner", "destination": "/scanner.html" },
+        { "source": "/products", "destination": "/products.html" },
+        { "source": "/categories", "destination": "/categories.html" },
+        { "source": "/suppliers", "destination": "/suppliers.html" },
+        { "source": "/pricing", "destination": "/pricing.html" },
+        { "source": "/purchase-orders", "destination": "/purchase-orders.html" },
+        { "source": "/customers", "destination": "/customers.html" },
+        { "source": "/analytics", "destination": "/analytics.html" },
+        { "source": "/reports", "destination": "/reports.html" },
+        { "source": "/audit", "destination": "/audit.html" },
+        { "source": "/pending", "destination": "/pending.html" },
+        { "source": "/users", "destination": "/users.html" },
+        { "source": "/settings", "destination": "/settings.html" },
+        { "source": "/pos", "destination": "/pos.html" },
+        { "source": "/stock-in", "destination": "/stock-in.html" },
+        { "source": "/stock-out", "destination": "/stock-out.html" },
+        { "source": "/adjustment", "destination": "/adjustment.html" },
+        { "source": "/my-transactions", "destination": "/my-transactions.html" },
+        { "source": "/my-requests", "destination": "/my-requests.html" },
+        { "source": "/register", "destination": "/register.html" }
+    ]
+}

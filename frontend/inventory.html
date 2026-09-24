@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventory Operations • Stock Management</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/sidebar.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <script src="/js/theme.js"></script>
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar"></aside>
+        <div class="main-area">
+            <header class="topbar" id="topbar"></header>
+            <main class="content">
+                <div class="page-header">
+                    <div class="page-header-left">
+                        <h1 class="page-title">Inventory Operations</h1>
+                        <p class="page-subtitle">Record stock movements and adjustments</p>
+                    </div>
+                </div>
+
+                <div class="tabs">
+                    <button class="tab active" data-tab="stock-in">Stock In</button>
+                    <button class="tab" data-tab="stock-out">Stock Out</button>
+                    <button class="tab" data-tab="adjustment">Adjustment</button>
+                </div>
+
+                <section class="panel padded">
+                    <form id="inventory-form" class="form-grid">
+                        <div class="form-group full">
+                            <label for="inv-product">Product *</label>
+                            <select id="inv-product" required></select>
+                        </div>
+                        <div class="form-group" data-tab-field="stock-in stock-out">
+                            <label for="inv-quantity">Quantity *</label>
+                            <input id="inv-quantity" type="number" min="1" required />
+                        </div>
+                        <div class="form-group" data-tab-field="adjustment">
+                            <label for="inv-new-qty">New Quantity *</label>
+                            <input id="inv-new-qty" type="number" min="0" />
+                        </div>
+                        <div class="form-group" data-tab-field="stock-in">
+                            <label for="inv-unit-cost">Unit Cost</label>
+                            <input id="inv-unit-cost" type="number" step="0.01" min="0" />
+                        </div>
+                        <div class="form-group" data-tab-field="stock-in">
+                            <label for="inv-supplier">Supplier</label>
+                            <select id="inv-supplier"></select>
+                        </div>
+                        <div class="form-group" data-tab-field="stock-out adjustment">
+                            <label for="inv-reason">Reason</label>
+                            <input id="inv-reason" maxlength="100" />
+                        </div>
+                        <div class="form-group" data-tab-field="stock-in stock-out">
+                            <label for="inv-reference">Reference</label>
+                            <input id="inv-reference" maxlength="100" />
+                        </div>
+                        <div class="form-group full">
+                            <label for="inv-notes">Notes</label>
+                            <textarea id="inv-notes"></textarea>
+                        </div>
+                        <div id="inv-error" class="alert alert-error full" hidden></div>
+                        <div class="modal-actions full">
+                            <button type="submit" class="btn btn-primary" id="inv-submit">Submit</button>
+                        </div>
+                    </form>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth-sidebar.js"></script>
+    <script src="/js/inventory.js"></script>
+</body>
+
+</html>
