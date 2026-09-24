@@ -262,7 +262,13 @@ def create_app():
 
 
 # ============================================================
-# ENTRY POINT
+# WSGI ENTRY POINT (para sa gunicorn/Render)
+# ============================================================
+app = create_app()
+
+
+# ============================================================
+# LOCAL DEV ENTRY POINT (para sa `python backend/run.py`)
 # ============================================================
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
@@ -272,8 +278,6 @@ if __name__ == "__main__":
         use_waitress = True
     except ImportError:
         use_waitress = False
-
-    app = create_app()
 
     # Refuse to start a second server on the same port (local dev safeguard)
     if _port_is_taken("127.0.0.1", port):
